@@ -14,18 +14,18 @@ struct ToDoListRowView: View {
     var body: some View {
         HStack {
             Text(item.description)
-            /*
-            Spacer()
-            Toggle(item.description, isOn: $item.isDone)
-                .labelsHidden()
-             */
+            if item.isDone {
+                Spacer()
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.blue)
+            }
         }
     }
 }
 
 struct ToDoListRow_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoListRowView(item: .constant(ToDoModel(description: "vaske bil")))
+        ToDoListRowView(item: .constant(ToDoModel(description: "vaske bil", isDone: true)))
             .padding()
             .previewLayout(.sizeThatFits)
     }
