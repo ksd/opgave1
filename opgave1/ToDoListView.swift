@@ -10,6 +10,8 @@ import SwiftUI
 struct ToDoListView: View {
     
     @EnvironmentObject var viewModel: ToDoViewModel
+    @State private var showDeleteAlert = false
+    @State private var itemId: UUID?
     
     var body: some View {
         NavigationView {
@@ -28,7 +30,9 @@ struct ToDoListView: View {
                         }
                         .tint(item.isDone ? .blue : .yellow)
                         Button(role: .destructive) {
-                            viewModel.deleteItemWith(id: item.id)
+                            showDeleteAlert = true
+                            itemId = item.id
+                            //viewModel.deleteItemWith(id: item.id)
                         } label: {
                             Label("Delete", systemImage: "trash.fill")
                         }
@@ -52,6 +56,16 @@ struct ToDoListView: View {
                         Image(systemName: "note.text.badge.plus")
                     }
                 }
+            }
+            .alert("Slette", isPresented: $showDeleteAlert) {
+                Button(role: .cancel, action: {}, label: {Text("Annuller")})
+                Button(role: .destructive, action: {
+                    if let itemId = self.itemId {
+                        withAnimation {
+                            viewModel.deleteItemWith(id:itemId)
+                        }
+                    }
+                }, label: {Text("Slet")})
             }
         }
     }
