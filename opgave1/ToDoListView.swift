@@ -57,15 +57,17 @@ struct ToDoListView: View {
                     }
                 }
             }
-            .alert("Slette", isPresented: $showDeleteAlert) {
-                Button(role: .cancel, action: {}, label: {Text("Annuller")})
-                Button(role: .destructive, action: {
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(title: Text("Er du sikker på du vil slette?"),
+                      primaryButton: .cancel(),
+                      secondaryButton: .destructive(Text("Delete")){
                     if let itemId = self.itemId {
                         withAnimation {
                             viewModel.deleteItemWith(id:itemId)
+                            self.itemId = nil
                         }
                     }
-                }, label: {Text("Slet")})
+                })
             }
         }
     }
