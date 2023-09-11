@@ -40,6 +40,7 @@ struct ToDoCreateView_Previews: PreviewProvider {
         NavigationView {
             ToDoCreateView().environmentObject(ToDoViewModel())
                 .navigationTitle("Create new To-Do Item")
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

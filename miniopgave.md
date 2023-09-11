@@ -17,7 +17,7 @@ struct ToDo: Identifiable {
   var id = UUID()
   ...
 }
-extension ToDO {
+extension ToDo {
   static let demoData = [
     ToDO(...),
     ToDo(...),

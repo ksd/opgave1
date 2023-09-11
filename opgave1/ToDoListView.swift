@@ -14,7 +14,7 @@ struct ToDoListView: View {
     @State private var itemId: UUID?
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach($viewModel.items) { $item in
                     NavigationLink {
@@ -48,6 +48,7 @@ struct ToDoListView: View {
                 
             }
             .navigationTitle("\(viewModel.items.count) To-Do items")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(id: "opret") {
                     NavigationLink {
@@ -75,6 +76,6 @@ struct ToDoListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoListView().environmentObject(ToDoViewModel())
+        ToDoListView().environmentObject(ToDoViewModel(demoMode: true))
     }
 }

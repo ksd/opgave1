@@ -8,8 +8,7 @@
 import Foundation
 
 class ToDoViewModel: ObservableObject {
-    @Published var items = ToDoModel.demoData
-    
+    @Published var items = [ToDoModel]()
     
     func deleteItemWith(id: UUID){
         let index = items.firstIndex { item in
@@ -27,5 +26,11 @@ class ToDoViewModel: ObservableObject {
     // deprecated
     func deleteToDoItemAt(_ index: IndexSet){
         items.remove(atOffsets: index)
+    }
+    
+    init(demoMode: Bool = false){
+        if demoMode {
+            items = ToDoModel.demoData
+        }
     }
 }
