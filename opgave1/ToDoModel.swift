@@ -18,6 +18,6 @@ extension ToDoModel {
     static let demoData = [
         ToDoModel(description: "købe mælk"),
         ToDoModel(description: "vaske op", isDone: true),
-        ToDoModel(description: "drikke mig ind i hegnet")
+        ToDoModel(description: "drikke mig i hegnet")
     ]
 }

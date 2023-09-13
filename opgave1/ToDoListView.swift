@@ -58,18 +58,38 @@ struct ToDoListView: View {
                     }
                 }
             }
-            .alert(isPresented: $showDeleteAlert) {
-                Alert(title: Text("Er du sikker på du vil slette?"),
-                      primaryButton: .cancel(),
-                      secondaryButton: .destructive(Text("Delete")){
-                    if let itemId = self.itemId {
-                        withAnimation {
-                            viewModel.deleteItemWith(id:itemId)
-                            self.itemId = nil
-                        }
-                    }
-                })
-            }
+            .actionSheet(isPresented: $showDeleteAlert) {
+                ActionSheet(
+                    title: Text("Permanently erase the to-do item?"),
+                    message: Text("You can't undo this action."),
+                    buttons:[
+                        .destructive(Text("Delete"),
+                                     action: {
+                                         if let itemId = self.itemId {
+                                             withAnimation {
+                                                 viewModel.deleteItemWith(id:itemId)
+                                                 self.itemId = nil
+                                             }
+                                         }
+                                     
+                                     }),
+                        .cancel()
+                    ]
+                )}
+            /*
+             .alert(isPresented: $showDeleteAlert) {
+                 Alert(title: Text("Er du sikker på du vil slette?"),
+                       primaryButton: .cancel(),
+                       secondaryButton: .destructive(Text("Delete")){
+                     if let itemId = self.itemId {
+                         withAnimation {
+                             viewModel.deleteItemWith(id:itemId)
+                             self.itemId = nil
+                         }
+                     }
+                 })
+             }
+             */
         }
     }
 }

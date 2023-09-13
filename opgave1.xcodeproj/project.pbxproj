@@ -66,13 +66,13 @@
 			children = (
 				44CE98ED28D301EB00BDF5FE /* opgave1App.swift */,
 				44CE98EF28D301EB00BDF5FE /* ToDoListView.swift */,
-				44CE98F128D301ED00BDF5FE /* Assets.xcassets */,
-				44CE98F328D301ED00BDF5FE /* Preview Content */,
 				44CE98FB28D3022D00BDF5FE /* ToDoModel.swift */,
 				44CE98FD28D3032D00BDF5FE /* ToDoViewmodel.swift */,
 				44CE98FF28D3087F00BDF5FE /* ToDoListRowView.swift */,
 				44CE990128D322C600BDF5FE /* ToDoItemDetailView.swift */,
 				44CE990328D326BD00BDF5FE /* ToDoCreateView.swift */,
+				44CE98F128D301ED00BDF5FE /* Assets.xcassets */,
+				44CE98F328D301ED00BDF5FE /* Preview Content */,
 			);
 			path = opgave1;
 			sourceTree = "<group>";
